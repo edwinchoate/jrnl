@@ -1,29 +1,32 @@
 using Microsoft.EntityFrameworkCore;
 
-public class JournalContext : DbContext
+namespace jrnl
 {
-
-    public JournalContext ()
+    public class JournalContext : DbContext
     {
-        var path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
-        DbPath = System.IO.Path.Join(path, "jrnl.db");
+
+        public JournalContext ()
+        {
+            var path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
+            DbPath = System.IO.Path.Join(path, "jrnl.db");
+        }
+
+        DbSet<JournalEntry> JournalEntries { get; set; }
+
+        public string DbPath { get; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlite($"Data Source={DbPath}");
+        }
+
     }
 
-    DbSet<JournalEntry> JournalEntries { get; set; }
-
-    public string DbPath { get; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public class JournalEntry
     {
-        optionsBuilder.UseSqlite($"Data Source={DbPath}");
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public DateTime Date { get; set; }
+        public string Body { get; set; }
     }
-
-}
-
-public class JournalEntry
-{
-    public int Id { get; set; }
-    public string Title { get; set; }
-    public DateTime Date { get; set; }
-    public string Body { get; set; }
 }
