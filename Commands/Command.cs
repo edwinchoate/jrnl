@@ -1,5 +1,5 @@
 ﻿
-namespace jrnl.Commands
+namespace jrnl
 {
     public abstract class Command
     {
