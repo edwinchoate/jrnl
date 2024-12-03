@@ -10,10 +10,9 @@ Add a new entry
 ```shell
 $ jrnl new
 Title (Optional): My Walk
-Type END; and press enter to finish entry
+Press enter to finish entry
 Write a journal entry...
 I took a nice walk today
-END;
 New entry saved: My Walk | 1/2/25
 ```
 
@@ -34,7 +33,7 @@ Jan 2, 2025 at 3:15pm
 I took a nice walk today
 ```
 
-Read an entry by title
+Or, read an entry by title
 
 ```shell
 $ jrnl read My Walk
