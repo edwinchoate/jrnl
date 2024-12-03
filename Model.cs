@@ -20,6 +20,13 @@ namespace jrnl
             optionsBuilder.UseSqlite($"Data Source={DbPath}");
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<JournalEntry>()
+                .Property(je => je.Date)
+                .HasDefaultValueSql("datetime('now')");
+        }
+
     }
 
     public class JournalEntry
