@@ -10,8 +10,7 @@ Add a new entry
 ```shell
 $ jrnl new
 Title (Optional): My Walk
-Press enter to finish entry
-Write a journal entry...
+Write a journal entry (Press enter to save):
 I took a nice walk today
 New entry saved: My Walk | 1/2/25
 ```
