@@ -1,4 +1,6 @@
 ﻿
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+
 namespace jrnl
 {
     public class NewCommand : Command
@@ -14,13 +16,24 @@ namespace jrnl
 
             string body = Console.ReadLine() ?? "";
 
+            Console.WriteLine("Saving...");
+
             using (var db = new JournalContext())
             {
-                db.Add(new JournalEntry { 
-                    Title = title,
-                    Body = body,
-                });
-                db.SaveChanges();
+                try
+                {
+                    EntityEntry<JournalEntry> newEntry = db.Add(new JournalEntry
+                    {
+                        Title = title,
+                        Body = body,
+                    });
+                    db.SaveChanges();
+                    PrintSuccess(newEntry.Entity.Title, newEntry.Entity.Date);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
             }
         }
 
@@ -34,6 +47,11 @@ namespace jrnl
         {
             Console.Write("Title (Optional): ");
             return Console.ReadLine() ?? "";
+        }
+
+        private void PrintSuccess (string title, DateTime date)
+        {
+            Console.WriteLine($"New entry saved: {title} | {date.Date.ToString("d")}");
         }
 
     }
