@@ -11,7 +11,7 @@ namespace jrnl
             DbPath = System.IO.Path.Join(path, "jrnl.db");
         }
 
-        DbSet<JournalEntry> JournalEntries { get; set; }
+        public DbSet<JournalEntry> JournalEntries { get; set; }
 
         public string DbPath { get; }
 
