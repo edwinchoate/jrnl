@@ -4,8 +4,16 @@ namespace jrnl
     class Program
     {
 
+        const string version = "1.0.0";
+
         public static void Main(string[] args)
         {
+
+            if (args.Contains("--help"))
+            {
+                PrintHelp();
+                return;
+            }
 
             Invoker invoker = new();
 
@@ -28,6 +36,19 @@ namespace jrnl
                 Console.WriteLine(e.Message);
             }
 
+        }
+
+        private static void PrintHelp () 
+        {
+            Console.WriteLine("jrnl");
+            Console.WriteLine($"v{version}");
+            Console.WriteLine();
+            Console.WriteLine(
+                @"Usage
+    new               - Add a new entry
+    list              - View list of all entries
+    read [title|id]   - View full text of an entry"
+            );
         }
 
     }

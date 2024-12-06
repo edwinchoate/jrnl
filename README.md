@@ -52,9 +52,10 @@ Help
 ```shell
 $ jrnl --help
 jrnl
-1.0.0
+v1.0.0
+
 Usage
-  new               - Add a new entry
-  list              - View list of all entries
-  read [title|id]   - View full text of an entry 
+    new               - Add a new entry
+    list              - View list of all entries
+    read [title|id]   - View full text of an entry 
 ```
