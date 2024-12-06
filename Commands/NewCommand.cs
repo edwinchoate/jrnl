@@ -14,44 +14,69 @@ namespace jrnl
 
             PrintInstructions();
 
-            string body = Console.ReadLine() ?? "";
+            string? body = GetBodyFromUser();
 
-            Console.WriteLine("Saving...");
-
-            using (var db = new JournalContext())
+            if (!String.IsNullOrEmpty(body))
+                SaveEntry(title, body);
+            else 
             {
-                try
-                {
-                    EntityEntry<JournalEntry> newEntry = db.Add(new JournalEntry
-                    {
-                        Title = title,
-                        Body = body,
-                    });
-                    db.SaveChanges();
-                    PrintSuccess(newEntry.Entity.Title, newEntry.Entity.Date);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
+                Console.WriteLine("Blank entry was not saved.");
             }
         }
 
         private void PrintInstructions ()
         {
-            Console.WriteLine("Press enter to finish entry\n" +
-                              "Write a journal entry...");
+            Console.WriteLine("Write a journal entry (Press enter to save):");
         }
 
         private string GetTitleFromUser()
         {
             Console.Write("Title (Optional): ");
-            return Console.ReadLine() ?? "";
+            
+            string? title = Console.ReadLine();
+
+            if (String.IsNullOrEmpty(title))
+                title = "Untitled";
+
+            return title; 
+        }
+
+        private string? GetBodyFromUser () 
+        {
+            return Console.ReadLine();
+        }
+
+        private async void SaveEntry (string title, string body) 
+        {
+            Console.WriteLine("Saving...");
+
+            using var db = new JournalContext();
+
+            try
+            {
+                var journalEntry = await db.AddAsync(new JournalEntry
+                {
+                    Title = title,
+                    Body = body,
+                });
+                db.SaveChanges();
+                PrintSuccess(journalEntry.Entity.Title, journalEntry.Entity.Date);
+            }
+            catch (Exception e)
+            {
+                PrintFailure(e);
+            }
         }
 
         private void PrintSuccess (string title, DateTime date)
         {
             Console.WriteLine($"New entry saved: {title} | {date.Date.ToString("d")}");
+        }
+
+        private void PrintFailure (Exception e) 
+        {
+            Console.WriteLine(e.Message);
+            Console.WriteLine(e.InnerException?.Message);
         }
 
     }
