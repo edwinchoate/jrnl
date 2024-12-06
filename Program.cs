@@ -9,6 +9,11 @@ namespace jrnl
 
             Invoker invoker = new();
 
+            using (var db = new JournalContext()) 
+            {
+                db.Database.EnsureCreated();
+            }
+
             try
             {
                 if (args.Length == 0)
