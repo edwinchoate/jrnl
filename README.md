@@ -15,7 +15,7 @@ I took a nice walk today
 New entry saved: My Walk | 1/2/25
 ```
 
-View all entries
+View list of all entries
 
 ```shell
 $ jrnl list
@@ -35,5 +35,26 @@ I took a nice walk today
 Or, read an entry by title
 
 ```shell
-$ jrnl read My Walk
+$ jrnl read "My Walk"
+```
+
+Delete an entry by ID
+
+```shell
+$ jrnl delete 1
+1 | My Walk | 1/2/25 | I took a nice walk today
+Delete this entry? (Y/N) Y
+Entry was deleted.
+```
+
+Help
+
+```shell
+$ jrnl --help
+jrnl
+1.0.0
+Usage
+  new               - Add a new entry
+  list              - View list of all entries
+  read [title|id]   - View full text of an entry 
 ```
