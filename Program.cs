@@ -47,7 +47,8 @@ namespace jrnl
                 @"Usage
     new               - Add a new entry
     list              - View list of all entries
-    read [title|id]   - View full text of an entry"
+    read [title|id]   - View full text of an entry
+    delete [id]       - Delete a specific entry"
             );
         }
 

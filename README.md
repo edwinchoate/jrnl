@@ -12,7 +12,7 @@ $ jrnl new
 Title (Optional): My Walk
 Write a journal entry (Press enter to save):
 I took a nice walk today
-New entry saved: My Walk | 1/2/25
+New entry saved: My Walk | 1/2/2025
 ```
 
 View list of all entries
@@ -20,7 +20,7 @@ View list of all entries
 ```shell
 $ jrnl list
 Your journal has (1) entry: 
-1 | My Walk | 1/2/25 | I took a nice walk today
+  1 | My Walk                  | 1/2/2025   | I took a nice walk today
 ```
 
 Read an entry by ID
@@ -58,4 +58,5 @@ Usage
     new               - Add a new entry
     list              - View list of all entries
     read [title|id]   - View full text of an entry 
+    delete [id]       - Delete a specific entry
 ```
