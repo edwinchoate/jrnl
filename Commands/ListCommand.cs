@@ -1,4 +1,5 @@
-﻿
+﻿using Microsoft.EntityFrameworkCore;
+
 namespace jrnl
 {
     public class ListCommand : Command
@@ -8,18 +9,19 @@ namespace jrnl
 
         public override void Execute(string[] args)
         {
-            var journal = GetList();
+            var task = GetListAsync();
+            List<JournalEntry> journal = task.Result;
             PrintList(journal);
         }
 
-        private List<JournalEntry> GetList () 
+        private async Task<List<JournalEntry>> GetListAsync () 
         {
             List<JournalEntry> list = new();
 
             try 
             {
                 using var db = new JournalContext();
-                list = db.JournalEntries.ToList();
+                list = await db.JournalEntries.ToListAsync();
             }
             catch (Exception e)
             {
