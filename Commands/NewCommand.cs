@@ -48,10 +48,10 @@ namespace jrnl
         {
             Console.WriteLine("Saving...");
 
-            using var db = new JournalContext();
-
             try
             {
+                using var db = new JournalContext();
+
                 var journalEntry = await db.AddAsync(new JournalEntry
                 {
                     Title = title,
