@@ -10,7 +10,7 @@ namespace jrnl
         public override void Execute(string[] args)
         {
             var task = GetListAsync();
-            List<JournalEntry> journal = task.Result;
+            List<JournalEntry> journal = task.Result;           
             PrintList(journal);
         }
 
@@ -21,7 +21,7 @@ namespace jrnl
             try 
             {
                 using var db = new JournalContext();
-                list = await db.JournalEntries.ToListAsync();
+                list = await db.JournalEntries.OrderByDescending(je => je.Date).ToListAsync();
             }
             catch (Exception e)
             {
