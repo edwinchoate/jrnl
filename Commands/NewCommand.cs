@@ -66,7 +66,7 @@ namespace jrnl
             }
         }
 
-        private void PrintSuccess (string title, DateTime date)
+        private void PrintSuccess (string? title, DateTime date)
         {
             Console.WriteLine($"New entry saved: {title} | {date.Date.ToString("d")}");
         }
