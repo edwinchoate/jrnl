@@ -1,6 +1,4 @@
 ﻿
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-
 namespace jrnl
 {
     public class NewCommand : Command
