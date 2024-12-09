@@ -32,8 +32,8 @@ namespace jrnl
     public class JournalEntry
     {
         public int Id { get; set; }
-        public string Title { get; set; }
+        public string? Title { get; set; }
         public DateTime Date { get; set; }
-        public string Body { get; set; }
+        public string? Body { get; set; }
     }
 }
