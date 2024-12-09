@@ -42,10 +42,10 @@ namespace jrnl
 
             foreach (JournalEntry journalEntry in list)
             {
-                Console.WriteLine("{0,3} | {1,-16} | {2,-10} | {3,-36}",
+                Console.WriteLine("{0,3} | {1,-16} | {2} | {3,-36}",
                                     journalEntry.Id,
                                     Truncate(journalEntry.Title, 16),
-                                    journalEntry.Date.ToString("d"),
+                                    journalEntry.Date.ToString("MM/dd/yy"),
                                     Truncate(journalEntry.Body, 36));
             }
         }

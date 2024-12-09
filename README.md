@@ -12,7 +12,7 @@ $ jrnl new
 Title (Optional): My Walk
 Write a journal entry (Press enter to save):
 I took a nice walk today
-New entry saved: My Walk | 1/2/2025
+New entry saved: My Walk | 01/02/25
 ```
 
 View list of all entries
@@ -20,7 +20,7 @@ View list of all entries
 ```shell
 $ jrnl list
 Your journal has (1) entry: 
-  1 | My Walk          | 1/2/2025   | I took a nice walk today
+  1 | My Walk          | 01/02/25 | I took a nice walk today
 ```
 
 Read an entry by ID
@@ -28,7 +28,7 @@ Read an entry by ID
 ```shell
 $ jrnl read 1
 My Walk
-Jan 2, 2025 at 3:15pm 
+Thursday, January 2, 2025 3:15 PM 
 I took a nice walk today
 ```
 
@@ -42,7 +42,7 @@ Delete an entry by ID
 
 ```shell
 $ jrnl delete 1
-1 | My Walk | 1/2/25 | I took a nice walk today
+1 | My Walk | 01/02/25 | I took a nice walk today
 Delete this entry? (Y/N) Y
 Entry was deleted.
 ```

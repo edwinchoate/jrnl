@@ -68,7 +68,7 @@ namespace jrnl
 
         private void PrintSuccess (string? title, DateTime date)
         {
-            Console.WriteLine($"New entry saved: {title} | {date.Date.ToString("d")}");
+            Console.WriteLine($"New entry saved: {title} | {date.Date.ToString("MM/dd/yy")}");
         }
 
         private void PrintFailure (Exception e) 
