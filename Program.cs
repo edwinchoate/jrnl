@@ -4,7 +4,7 @@ namespace jrnl
     class Program
     {
 
-        const string version = "1.0.0";
+        const string version = "0.0.0";
 
         public static void Main(string[] args)
         {
