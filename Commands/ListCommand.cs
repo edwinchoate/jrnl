@@ -2,12 +2,12 @@
 
 namespace jrnl
 {
-    public class ListCommand : Command
+    public class ListCommand : ICommand
     {
 
-        public override string Name => "list";
+        public string Name => "list";
 
-        public override void Execute(string[] args)
+        public void Execute(string[] args)
         {
             var task = GetListAsync();
             List<JournalEntry> journal = task.Result;           

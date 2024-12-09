@@ -4,7 +4,7 @@ namespace jrnl
     public class Invoker
     {
 
-        private readonly List<Command> Commands = [
+        private readonly List<ICommand> Commands = [
             new NewCommand(),
             new ListCommand(),
             new ReadCommand()
@@ -16,7 +16,7 @@ namespace jrnl
                 throw new ArgumentException($"Invalid command: {commandName}");
             else
             {
-                Command? command = Find(commandName);
+                ICommand? command = Find(commandName);
                 command?.Execute(args);
             }
         }
@@ -28,7 +28,7 @@ namespace jrnl
             return Find(commandName) is not null;
         }
 
-        private Command? Find (string name)
+        private ICommand? Find (string name)
         {
             return Commands.Find(c =>
                 String.Equals(c.Name, name, StringComparison.OrdinalIgnoreCase));

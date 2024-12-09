@@ -1,14 +1,14 @@
 ﻿
 namespace jrnl
 {
-    public class ReadCommand : Command
+    public class ReadCommand : ICommand
     {
 
-        public override string Name => "read";
+        public string Name => "read";
 
-        public override void Execute(string[] args)
+        public void Execute(string[] args)
         {
-            // TODO
+            // TODO      
         }
 
     }

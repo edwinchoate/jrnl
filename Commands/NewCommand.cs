@@ -1,12 +1,12 @@
 ﻿
 namespace jrnl
 {
-    public class NewCommand : Command
+    public class NewCommand : ICommand
     {
 
-        public override string Name => "new";
+        public string Name => "new";
 
-        public override void Execute(string[] args)
+        public void Execute(string[] args)
         {
             string title = GetTitleFromUser();
 
