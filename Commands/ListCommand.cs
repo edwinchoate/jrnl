@@ -48,6 +48,9 @@ namespace jrnl
                                     journalEntry.Date.ToString("MM/dd/yy"),
                                     Truncate(journalEntry.Body, 36));
             }
+
+            if (count == 0)
+                Console.WriteLine($"Run 'jrnl {new NewCommand().Name}' to write your first entry.");
         }
 
         private void PrintFailure (Exception e) 
