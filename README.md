@@ -20,7 +20,7 @@ View list of all entries
 ```shell
 $ jrnl list
 Your journal has (1) entry: 
-  1 | My Walk                  | 1/2/2025   | I took a nice walk today
+  1 | My Walk          | 1/2/2025   | I took a nice walk today
 ```
 
 Read an entry by ID
