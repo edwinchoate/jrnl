@@ -1,7 +1,7 @@
 
 # jrnl
 
-_A simple CLI journal_
+_A simple command-line journal app using a local SQLite database and EntityFrameworkCore_
 
 ## Usage
 
