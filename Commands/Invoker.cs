@@ -7,7 +7,8 @@ namespace jrnl
         private readonly List<ICommand> Commands = [
             new NewCommand(),
             new ListCommand(),
-            new ReadCommand()
+            new ReadCommand(),
+            new DeleteCommand()
         ];
 
         public void Invoke(string commandName, string[] args)
