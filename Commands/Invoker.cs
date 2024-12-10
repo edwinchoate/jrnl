@@ -4,7 +4,7 @@ namespace jrnl
     public class Invoker
     {
 
-        private readonly List<ICommand> Commands = [
+        private readonly List<ICommand> _commands = [
             new NewCommand(),
             new ListCommand(),
             new ReadCommand(),
@@ -31,7 +31,7 @@ namespace jrnl
 
         private ICommand? Find (string name)
         {
-            return Commands.Find(c =>
+            return _commands.Find(c =>
                 String.Equals(c.Name, name, StringComparison.OrdinalIgnoreCase));
         }
 
