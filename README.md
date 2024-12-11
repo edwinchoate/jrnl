@@ -3,25 +3,9 @@
 
 _A simple command-line journal app using a local SQLite database and EntityFrameworkCore_
 
-## Get Started
+## Download
 
-### Windows
-
-Download `jrnl-win-x64.zip` and unzip
-
-```shell
-> cd jrnl-win-x64
-> jrnl --help
-```
-
-### Mac
-
-Download `jrnl-osx-x64.zip` and unzip
-
-```shell
-$ cd jrnl-osx-x64
-$ ./jrnl --help
-```
+[Latest Release](https://github.com/edwinchoate/jrnl/releases/latest)
 
 ## Usage
 
