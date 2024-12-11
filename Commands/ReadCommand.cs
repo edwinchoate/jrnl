@@ -8,17 +8,12 @@ namespace jrnl
 
         public void Execute(string[] args)
         {
-            var @params = ParseArgs(args); 
+            var @params = ParseArgs(args);
 
-            JournalEntry? entry;
-
-            if (@params.IsInt)
-                entry = GetEntry(Int32.Parse(@params.Value));
-            else
-                entry = GetEntry(@params.Value);
+            JournalEntry? entry = GetEntry(@params.Value, @params.IsInt);
 
             if (entry is null)
-                PrintEntryNotFound(args[0]);
+                PrintEntryNotFound();
             else
                 PrintEntry(entry);
         }
@@ -28,35 +23,25 @@ namespace jrnl
             if (args.Length < 1)
                 throw new ArgumentException($"'{Name}' requires an argument (id or title)");
 
-            int id;
-            if (Int32.TryParse(args[0], out id))
-                return (args[0], true);
+            string arg = args[0];
+
+            if (Int32.TryParse(arg, out int i))
+                return (arg, true);
             else
-                return (args[0], false);
+                return (arg, false);
         }
 
-        private JournalEntry? GetEntry (int id)
+        private JournalEntry? GetEntry (string arg, bool isInt)
         {
             JournalEntry? entry = null;
             try
             {
                 using var db = new JournalContext();
-                entry = db.JournalEntries.Single(je => je.Id == id);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            return entry;
-        }
 
-        private JournalEntry? GetEntry (string title)
-        {
-            JournalEntry? entry = null;
-            try
-            {
-                using var db = new JournalContext();
-                entry = db.JournalEntries.Single(je => je.Title == title);
+                if (isInt)
+                    entry = db.JournalEntries.Single(je => je.Id == Int32.Parse(arg));
+                else
+                    entry = db.JournalEntries.Single(je => je.Title == arg);
             }
             catch (Exception e)
             {
@@ -72,7 +57,7 @@ namespace jrnl
             Console.WriteLine(entry.Body);
         }
 
-        private void PrintEntryNotFound (string arg)
+        private void PrintEntryNotFound ()
         {
             Console.WriteLine($"Entry was not found.");
         }
